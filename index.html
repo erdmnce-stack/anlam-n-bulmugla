@@ -127,11 +127,15 @@
   import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
   const firebaseConfig = {
-    apiKey: "anlamınıbulmugla", // Burası doğru mu?
-    authDomain: "anlamınıbulmugla.firebaseapp.com", // Burası doğru mu?
-    projectId: "1:71609064976:web:f6492705fbe91e09c97495", // Burası doğru mu?
-    // ... diğer alanlar
-  };
+ 
+  apiKey: "AIzaSyARDPDRIO6YUO2NogwOfiCzILmupppbzI4",
+  authDomain: "anlamini-bul-mugla.firebaseapp.com",
+  projectId: "anlamini-bul-mugla",
+  storageBucket: "anlamini-bul-mugla.firebasestorage.app",
+  messagingSenderId: "71609064976",
+  appId: "1:71609064976:web:f6492705fbe91e09c97495"
+};
+
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -319,5 +323,6 @@
 </body>
 
 </html>
+
 
 
