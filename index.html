@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Yarışma (20 Soru)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #eef2f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .container { max-width: 750px; margin-top: 40px; }
+        .card { border: none; shadow: 0 8px 20px rgba(0,0,0,0.1); border-radius: 20px; overflow: hidden; }
+        .hidden { display: none !important; }
+        .timer-box { font-size: 1.4rem; font-weight: bold; color: #fff; background: #dc3545; padding: 5px 15px; border-radius: 10px; }
+        .option-btn { width: 100%; text-align: left; margin-bottom: 12px; padding: 15px; border: 2px solid #e9ecef; border-radius: 12px; transition: all 0.2s; background: #fff; color: #333; }
+        .option-btn:hover { background-color: #f8f9fa; border-color: #0d6efd; color: #0d6efd; transform: translateY(-2px); }
+        .option-btn:active { background-color: #0d6efd; color: white; }
+        .header-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 20px; text-align: center; }
+        #admin-panel { margin-top: 50px; border-top: 2px dashed #ccc; padding-top: 20px; margin-bottom: 50px;}
+    </style>
+</head>
+<body>
+
+<div class="container mb-5">
+    
+    <div id="login-screen" class="card">
+        <div class="header-bg">
+            <h1>🚀 Bilgi Yarışması</h1>
+            <p class="mb-0 opacity-75">20 Soru | Rastgele Sıralama | Zamana Karşı</p>
+        </div>
+        <div class="p-5">
+            <form id="user-form">
+                <div class="mb-3">
+                    <label class="form-label text-muted">Adınız Soyadınız</label>
+                    <input type="text" id="username" class="form-control form-control-lg" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted">E-posta Adresiniz</label>
+                    <input type="email" id="useremail" class="form-control form-control-lg" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted">Telefon Numaranız</label>
+                    <input type="text" id="userphone" class="form-control form-control-lg" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100 py-3 fw-bold mt-2">Yarışmaya Başla</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="quiz-screen" class="card p-4 hidden">
+        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+            <h5 class="m-0 text-primary" id="question-counter">Soru 1 / 20</h5>
+            <div class="timer-box" id="timer">00:00</div>
+        </div>
+        
+        <h4 id="question-text" class="mb-4 lh-base fw-bold">Soru metni yükleniyor...</h4>
+        
+        <div id="options-container">
+            </div>
+    </div>
+
+    <div id="result-screen" class="card p-5 text-center hidden">
+        <div class="mb-4">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" width="80" alt="Trophy">
+        </div>
+        <h2 class="fw-bold mb-3">Yarışma Tamamlandı!</h2>
+        
+        <div class="row justify-content-center mb-4">
+            <div class="col-6">
+                <div class="bg-light p-3 rounded">
+                    <div class="text-muted small">TOPLAM PUAN</div>
+                    <div class="display-6 fw-bold text-success" id="final-score">0</div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="bg-light p-3 rounded">
+                    <div class="text-muted small">TOPLAM SÜRE</div>
+                    <div class="display-6 fw-bold text-dark" id="final-time">0:00</div>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="text-start border-bottom pb-2 mt-4">🏆 Liderlik Tablosu (İlk 10)</h5>
+        <div class="table-responsive">
+            <table class="table table-hover text-start align-middle">
+                <thead class="table-light">
+                    <tr><th>#</th><th>İsim</th><th>Puan</th><th>Süre</th></tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr><td colspan="4" class="text-center">Yükleniyor...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="text-muted small mt-3">Sonuçlarınız sisteme kaydedilmiştir. Pencereyi kapatabilirsiniz.</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-link text-decoration-none text-muted" onclick="toggleAdmin()">Yönetici Girişi 🔒</button>
+    </div>
+
+    <div id="admin-panel" class="hidden container bg-white p-4 rounded shadow-sm">
+        <h3>Yönetici Paneli</h3>
+        <div class="input-group mb-3 w-50">
+            <input type="password" id="admin-pass" class="form-control" placeholder="Admin Şifresi">
+            <button onclick="checkAdmin()" class="btn btn-dark">Giriş Yap</button>
+        </div>
+        
+        <div id="admin-data" class="hidden">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5>Tüm Katılımcı Listesi</h5>
+                <button onclick="exportTableToCSV('yarisma-sonuclari.csv')" class="btn btn-success btn-sm">Excel İndir (CSV)</button>
+            </div>
+            <div class="table-responsive" style="max-height: 400px; overflow: auto;">
+                <table class="table table-bordered table-striped text-small" id="full-table">
+                    <thead><tr><th>Tarih</th><th>İsim</th><th>Email</th><th>Tel</th><th>Puan</th><th>Süre(sn)</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+  // ==========================================
+  // 1. FIREBASE AYARLARI (KENDİ BİLGİLERİNİ GİR)
+  // ==========================================
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+  const firebaseConfig = {const firebaseConfig = {
+  apiKey: "AIzaSyARDPDRIO6YUO2NogwOfiCzILmupppbzI4",
+  authDomain: "anlamini-bul-mugla.firebaseapp.com",
+  projectId: "anlamini-bul-mugla",
+  storageBucket: "anlamini-bul-mugla.firebasestorage.app",
+  messagingSenderId: "71609064976",
+  appId: "1:71609064976:web:f6492705fbe91e09c97495"
+};
+    apiKey: "SENIN_API_KEY_BURAYA_YAZ",
+    authDomain: "SENIN_PROJEN.firebaseapp.com",
+    projectId: "SENIN_PROJE_ID",
+    storageBucket: "SENIN_PROJEN.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // ==========================================
+  // 2. 20 ADET ÖRNEK SORU HAVUZU
+  // ==========================================
+  // İlk şık (index 0) her zaman doğru cevap olarak yazılmalı. Kod bunu karıştıracak.
+  const allQuestions = [
+    { q: "Evde kim yok", a: ["fil", "pergel", "can", "yoda"] },
+    { q: "Nerde oturuyoruz", a: ["düğerek", "İstanbul", "İzmir", "Konya"] },
+    { q: "babanın adı ne", a: ["erdem", "erde", "erd", "er"] },
+    { q: "annenin adı ne", a: ["sinem", "sine", "sin", "si"] },
+    { q: "yoda nedir", a: ["kedi", "köpek", "dinazor", "jedi"] },
+    { q: "pergel nedir", a: ["köpek", "kedi", "fil", "çember çizer"] },
+    { q: "en sevdiğin renk", a: ["mor", "diğer", "diğer", "diğer"] },
+    { q: "güraya 1 leblebi verdin o 3 istedi kaç tane daha vermelisin", a: ["2", "1", "4", "3"] },
+    { q: "büyüyünce ne olacaksın", a: ["mor lamborghini", "diğer", "diğer", "diğer"] },
+    { q: "yatakta kim yok", a: ["gül", "uykaka", "panda", "maymun"] },
+    { q: "favorin hangisi", a: ["bluey", "bingo", "bandit", "chilli"] },
+    { q: "ketçabın içinde hangisinin ne işi var yaaa", a: ["kereviz", "domates", "tuz", "şeker"] },
+    { q: "bugün çiğnemeli yedik mi", a: ["eveeeeeet", "evet", "eveet", "eveeet"] },
+    { q: "şu zor seçimi yapsana", a: ["elif", "talya", "neva", "uras efe (bunu seçe)"] },
+    { q: "burda ne yüzer", a: ["gemi", "araba", "ev", "lazımlık"] },
+    { q: "hangi şarkıyı seçersin", a: ["sigma boy", "apt", "dönence", "harderbesterstronger"] },
+    { q: "ilk aşkın kim", a: ["damla", "yok öyle bişey", "diğer", "lamborghini"] },
+    { q: "sağlıklı beslenen panda kiiiim", a: ["pofiiii", "baba", "pergel", "yoda"] },
+    { q: "bugün ne giymek istersin", a: ["Kırmızı", "Yeşil", "Turuncu", "Mor"] },
+    { q: "ne yersen düşmeyi öğrenirsin", a: ["peynir", "çilek", "mandalina", "mantı"] }
+  ];
+
+  // ==========================================
+  // 3. OYUN MOTORU
+  // ==========================================
+  let quizQuestions = [];
+  let currentQIndex = 0;
+  let score = 0;
+  let timerInterval;
+  let totalSeconds = 0;
+  let userInfo = {};
+
+  // Ekran Elementleri
+  const els = {
+      login: document.getElementById('login-screen'),
+      quiz: document.getElementById('quiz-screen'),
+      result: document.getElementById('result-screen'),
+      counter: document.getElementById('question-counter'),
+      qText: document.getElementById('question-text'),
+      opts: document.getElementById('options-container'),
+      timer: document.getElementById('timer'),
+      score: document.getElementById('final-score'),
+      time: document.getElementById('final-time')
+  };
+
+  // Başlama Butonu
+  document.getElementById('user-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      userInfo = {
+          name: document.getElementById('username').value,
+          email: document.getElementById('useremail').value,
+          phone: document.getElementById('userphone').value
+      };
+      startQuiz();
+  });
+
+  function startQuiz() {
+      els.login.classList.add('hidden');
+      els.quiz.classList.remove('hidden');
+
+      // 20 sorunun hepsini al ve sırasını karıştır
+      quizQuestions = [...allQuestions].sort(() => 0.5 - Math.random());
+      
+      // Zamanlayıcıyı başlat
+      timerInterval = setInterval(() => {
+          totalSeconds++;
+          const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+          const s = (totalSeconds % 60).toString().padStart(2, '0');
+          els.timer.innerText = `${m}:${s}`;
+      }, 1000);
+
+      loadQuestion();
+  }
+
+  function loadQuestion() {
+      if (currentQIndex >= quizQuestions.length) {
+          endQuiz();
+          return;
+      }
+
+      const q = quizQuestions[currentQIndex];
+      els.counter.innerText = `Soru ${currentQIndex + 1} / ${quizQuestions.length}`;
+      els.qText.innerText = q.q;
+      els.opts.innerHTML = '';
+
+      // Şıkları karıştır (Doğru cevabı takip et)
+      let options = q.a.map((txt, i) => ({ text: txt, isCorrect: i === 0 }));
+      options.sort(() => 0.5 - Math.random());
+
+      options.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = 'btn option-btn';
+          btn.innerHTML = `<span>${opt.text}</span>`;
+          btn.onclick = () => handleAnswer(opt.isCorrect);
+          els.opts.appendChild(btn);
+      });
+  }
+
+  function handleAnswer(isCorrect) {
+      if (isCorrect) score += 5; // Her doğru 5 puan (20 soru * 5 = 100)
+      currentQIndex++;
+      loadQuestion();
+  }
+
+  async function endQuiz() {
+      clearInterval(timerInterval);
+      els.quiz.classList.add('hidden');
+      els.result.classList.remove('hidden');
+
+      els.score.innerText = score;
+      const m = Math.floor(totalSeconds / 60);
+      const s = totalSeconds % 60;
+      els.time.innerText = `${m}dk ${s}sn`;
+
+      // Firebase Kaydı
+      try {
+          await addDoc(collection(db, "scores"), {
+              name: userInfo.name,
+              email: userInfo.email,
+              phone: userInfo.phone,
+              score: score,
+              time: totalSeconds,
+              date: new Date().toISOString()
+          });
+          getLeaderboard();
+      } catch (err) {
+          console.error("Kayıt hatası:", err);
+          alert("Puan kaydedilemedi, internet bağlantınızı kontrol edin.");
+      }
+  }
+
+  async function getLeaderboard() {
+      const q = query(collection(db, "scores"), orderBy("score", "desc"), orderBy("time", "asc"), limit(10));
+      const snapshot = await getDocs(q);
+      const tbody = document.getElementById('leaderboard-body');
+      tbody.innerHTML = '';
+      
+      let rank = 1;
+      snapshot.forEach(doc => {
+          const d = doc.data();
+          tbody.innerHTML += `<tr><td>${rank++}</td><td>${d.name}</td><td><strong>${d.score}</strong></td><td>${d.time}sn</td></tr>`;
+      });
+  }
+
+  // --- GLOBAL ADMIN FONKSİYONLARI ---
+  window.toggleAdmin = () => document.getElementById('admin-panel').classList.toggle('hidden');
+  
+  window.checkAdmin = async () => {
+      if(document.getElementById('admin-pass').value === "admin123") {
+          document.getElementById('admin-data').classList.remove('hidden');
+          const snapshot = await getDocs(query(collection(db, "scores"), orderBy("score", "desc")));
+          const tbody = document.querySelector('#full-table tbody');
+          tbody.innerHTML = '';
+          snapshot.forEach(doc => {
+              const d = doc.data();
+              tbody.innerHTML += `<tr><td>${new Date(d.date).toLocaleDateString()}</td><td>${d.name}</td><td>${d.email}</td><td>${d.phone}</td><td>${d.score}</td><td>${d.time}</td></tr>`;
+          });
+      } else { alert("Hatalı Şifre!"); }
+  }
+
+  window.exportTableToCSV = (filename) => {
+    const rows = document.querySelectorAll("#full-table tr");
+    let csv = [];
+    for (const row of rows) {
+        const cols = row.querySelectorAll("td, th");
+        csv.push(Array.from(cols).map(c => c.innerText).join(","));
+    }
+    const blob = new Blob([csv.join("\n")], {type: "text/csv"});
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+  }
+</script>
+
+</body>
+</html>
