@@ -120,6 +120,16 @@
 </div>
 
 <script type="module">
+    // --- GÜVENLİK BAŞLANGIÇ (Sağ Tık ve Kısayol Engelleme) ---
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  document.onkeydown = function(e) {
+      if(e.keyCode == 123) { return false; } // F12
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Ctrl+Shift+I
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } // Ctrl+Shift+C
+      if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // Ctrl+U
+  }
+  // --- GÜVENLİK BİTİŞ ---
   // ==========================================
   // 1. FIREBASE AYARLARI (KENDİ BİLGİLERİNİ GİR)
   // ==========================================
@@ -141,7 +151,7 @@
   // ==========================================
   // 2. 20 ADET ÖRNEK SORU HAVUZU
   // ==========================================
-  // İlk şık (index 0) her zaman doğru cevap olarak yazılmalı. Kod bunu karıştıracak.
+  // 
   const allQuestions = [
     { q: "Evde kim yok", a: ["fil", "pergel", "can", "yoda"] },
     { q: "Nerde oturuyoruz", a: ["düğerek", "İstanbul", "İzmir", "Konya"] },
@@ -321,6 +331,7 @@
 </body>
 
 </html>
+
 
 
 
