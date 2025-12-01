@@ -156,26 +156,26 @@
   // ==========================================
   // 
   const allQuestions = [
-    { q: "Evde kim yok", a: ["fil", "pergel", "can", "yoda"] },
-    { q: "Nerde oturuyoruz", a: ["düğerek", "İstanbul", "İzmir", "Konya"] },
-    { q: "babanın adı ne", a: ["erdem", "erde", "erd", "er"] },
-    { q: "annenin adı ne", a: ["sinem", "sine", "sin", "si"] },
-    { q: "yoda nedir", a: ["kedi", "köpek", "dinazor", "jedi"] },
-    { q: "pergel nedir", a: ["köpek", "kedi", "fil", "çember çizer"] },
-    { q: "en sevdiğin renk", a: ["mor", "diğer", "diğer", "diğer"] },
-    { q: "güraya 1 leblebi verdin o 3 istedi kaç tane daha vermelisin", a: ["2", "1", "4", "3"] },
-    { q: "büyüyünce ne olacaksın", a: ["mor lamborghini", "diğer", "diğer", "diğer"] },
-    { q: "yatakta kim yok", a: ["gül", "uykaka", "panda", "maymun"] },
-    { q: "favorin hangisi", a: ["bluey", "bingo", "bandit", "chilli"] },
-    { q: "ketçabın içinde hangisinin ne işi var yaaa", a: ["kereviz", "domates", "tuz", "şeker"] },
-    { q: "bugün çiğnemeli yedik mi", a: ["eveeeeeet", "evet", "eveet", "eveeet"] },
-    { q: "şu zor seçimi yapsana", a: ["elif", "talya", "neva", "uras efe (bunu seçe)"] },
-    { q: "burda ne yüzer", a: ["gemi", "araba", "ev", "lazımlık"] },
-    { q: "hangi şarkıyı seçersin", a: ["sigma boy", "apt", "dönence", "harderbesterstronger"] },
-    { q: "ilk aşkın kim", a: ["damla", "yok öyle bişey", "diğer", "lamborghini"] },
-    { q: "sağlıklı beslenen panda kiiiim", a: ["pofiiii", "baba", "pergel", "yoda"] },
-    { q: "bugün ne giymek istersin", a: ["Kırmızı", "Yeşil", "Turuncu", "Mor"] },
-    { q: "ne yersen düşmeyi öğrenirsin", a: ["peynir", "çilek", "mandalina", "mantı"] }
+    { q: "'Şirket, inovasyon çalışmalarına büyük bütçe ayırdı.' cümlesinde geçen 'inovasyon' sözcüğünün TDK karşılığı nedir?", a: ["Yenileşim", "Gelişim", "Üretim", "Yatırım"] },
+    { q: "'Yazarın eserlerinde ironi önemli bir yer tutar.' cümlesindeki 'ironi' sözcüğünün anlamı nedir?", a: ["Gülmece", "Abartı", "Hüzün", "Karamsarlık"] },
+    { q: "'Çalışmalarında daha pragmatik yöntemler izlemelisin.' cümlesindeki 'pragmatik' kelimesinin Türkçe karşılığı hangisidir?", a: ["Yararcı", "Duygusal", "Geleneksel", "Bilimsel"] },
+    { q: "'Ekip arasındaki koordinasyon eksikliği projeyi yavaşlattı.' cümlesinde geçen 'koordinasyon' kelimesinim en doğru Türkçe karşılığı nedir?", a: ["Eşgüdüm", "İletişim", "Yardımlaşma", "Toplantı"] },
+    { q: "'Olaylara çok pesimist yaklaşıyorsun.' cümlesindeki 'pesimist' kelimesinin zıttı aşağıdakilerden hangisidir?", a: ["İyimser", "Karamsar", "Hayalperest", "Gerçekçi"] },
+    { q: "'Bu bölgeye özgü, endemik bitki türleri koruma altına alındı.' cümlesindeki 'endemik' kelimesinin anlamı nedir?", a: ["Yerel", "Yabani", "Yabancı", "Zehirli"] },
+    { q: "'Konuşmacı, konuyu manipüle ederek seyirciyi etkiledi.' cümlesindeki 'manipülasyon' kavramının Türkçe karşılığı nedir?", a: ["Yönlendirme", "Eleştirme", "Onaylama", "Reddetme"] },
+    { q: "'Doktor, hastanın rehabilitasyon sürecini başlattı.' kelimesinin Türkçe karşılığı hangisidir?", a: ["İyileştirme", "Dinlenme", "İlaç Tedavisi", "Muayene"] },
+    { q: "'Bu konu literatürde sıkça tartışılmaktadır.' cümlesindeki 'literatür' kelimesinin Türkçe karşılığı nedir?", a: ["Alan yazın", "Sözlük", "Ansiklopedi", "Üniversite"] },
+    { q: "'Sempozyuma katılmak için Ankara'ya gitti.' cümlesindeki 'sempozyum' kelimesinin Türkçe karşılığı hangisidir?", a: ["Bilgi Şöleni", "Sergi", "Toplantı", "Yarışma"] },
+    { q: "'Bu paradoksun içinden çıkamıyorum.' cümlesinde içinden çıkılamayan durumun karşılığı nedir?", a: ["Çelişki", "Boşluk", "Labirent", "Sorun"] },
+    { q: "'Bu spesifik bir durum, genele yayamayız.' cümlesindeki 'spesifik' kelimesinin Türkçe karşılığı nedir?", a: ["Özgül", "Zor", "Yeni", "Sıradan"] },
+    { q: "'Bu bina şehrin silüetini bozuyor.' cümlesindeki 'silüet' kelimenin Türkçe karşılığı nedir? ", a: ["Görüntü", "Gölge", "Yapı", "Tarih"] },
+    { q: "'Olaylara rasyonel bir açıdan bakmalısın.' cümlesindeki 'rasyonel' kelimenin Türkçe karşılığı hangisidir?", a: ["Akılcı", "Geleneksel", "Gerçekçi", "Duygusal"] },
+    { q: "'Lansman fiyatları ile satışa sunuldu.' yerine hangi ifade kullanılması daha uygundur?", a: ["Tanıtıma özel fiyatlar ile satışa sunuldu", "İndirimli fiyatlar ile satışa sunuldu", "Kampanya fiyatları ile satışa sunuldu", "Liste fiyatları ile satışa sunuldu"] },
+    { q: "'Toplantıda ortaya atılan hipotez oldukça dikkat çekiciydi.' cümlesindeki 'hipotez' kelimesinin Türkçe karşılığı nedir?", a: ["Önerme", "Yasa", "Rapor", "Deney"] },
+    { q: "'Yazarın biografi kitabı çok ilgi gördü.' cümlesindeki 'biografi' kelimesinin Türkçe karşılığı nedir?", a: ["Yaşam öyküsü", "Anı defteri", "Günlük", "Sözlük"] },
+    { q: "'Matematik öğretmeni bir sonraki ders için iletki getirmemizi istedi' cümlesindeki 'iletki' kelimesi ne anlama gelmektedir?", a: ["Açıölçer", "Gönye", "Pergel", "Cetvel"] },
+    { q: "'Fonksiyon grafiğini inceleyerek değişimin davranışını yorumlayabiliriz' cümlesindeki 'fonksiyon' kelimesinin Türkçe karşılığı nedir?", a: ["Bağıntı", "Çizgi", "Çizge", "Kural"] },
+    { q: "'Bu yerin vibe’ı çok hoş, insanın enerjisini yükseltiyor.' diyen bir arkadaşınız söz konusu yer hakkında ne anlatmak istemektedir?" , a: ["Hava", "Aydınlatma", "Ses", "Kalabalık"] }
   ];
 
   // ==========================================
@@ -334,6 +334,7 @@
 </body>
 
 </html>
+
 
 
 
