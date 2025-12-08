@@ -175,6 +175,11 @@
     { q: "'Yazarın biografi kitabı çok ilgi gördü.' cümlesindeki 'biografi' kelimesinin Türkçe karşılığı nedir?", a: ["Yaşam öyküsü", "Anı defteri", "Günlük", "Sözlük"] },
     { q: "'Matematik öğretmeni bir sonraki ders için iletki getirmemizi istedi' cümlesindeki 'iletki' kelimesi ne anlama gelmektedir?", a: ["Açıölçer", "Gönye", "Pergel", "Cetvel"] },
     { q: "'Fonksiyon grafiğini inceleyerek değişimin davranışını yorumlayabiliriz' cümlesindeki 'fonksiyon' kelimesinin Türkçe karşılığı nedir?", a: ["Bağıntı", "Çizgi", "Çizge", "Kural"] },
+      { q: "'asdfghhjkl' cümlesindeki 'iletki' kelimesi ne anlama gelmektedir?", a: ["Açıölçer", "Gönye", "Pergel", "Cetvel"] },
+      { q: "'1234567890' cümlesindeki 'iletki' kelimesi ne anlama gelmektedir?", a: ["Açıölçer", "Gönye", "Pergel", "Cetvel"] },
+      { q: "'qwertyuuıoopğ' cümlesindeki 'iletki' kelimesi ne anlama gelmektedir?", a: ["Açıölçer", "Gönye", "Pergel", "Cetvel"] },
+      { q: "'zxcvbnmö' cümlesindeki 'iletki' kelimesi ne anlama gelmektedir?", a: ["Açıölçer", "Gönye", "Pergel", "Cetvel"] },
+      { q: "'q2w3e4r5t6y7u8ı9o0' cümlesindeki 'iletki' kelimesi ne anlama gelmektedir?", a: ["Açıölçer", "Gönye", "Pergel", "Cetvel"] },
     { q: "'Bu yerin vibe’ı çok hoş, insanın enerjisini yükseltiyor.' diyen bir arkadaşınız söz konusu yer hakkında ne anlatmak istemektedir?" , a: ["Hava", "Aydınlatma", "Ses", "Kalabalık"] }
   ];
 
@@ -213,11 +218,14 @@
   });
 
   function startQuiz() {
-      els.login.classList.add('hidden');
+     els.login.classList.add('hidden');
       els.quiz.classList.remove('hidden');
 
-      // 20 sorunun hepsini al ve sırasını karıştır
-      quizQuestions = [...allQuestions].sort(() => 0.5 - Math.random());
+      // 50 soruluk havuzu rastgele karıştır ve ilk 20 tanesini seç.
+      // Bu, yarışmada her seferinde farklı bir 20 soru seti kullanılmasını sağlar.
+      quizQuestions = [...allQuestions]
+          .sort(() => 0.5 - Math.random()) // Tüm havuzu karıştır
+          .slice(0, 20); // İlk 20 soruyu seç
       
       // Zamanlayıcıyı başlat
       timerInterval = setInterval(() => {
@@ -334,6 +342,7 @@
 </body>
 
 </html>
+
 
 
 
