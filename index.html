@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Çevrim İçi Anlamını Bul / MUĞLA (20 Soru)</title>
+    <title>Demo Yarışma (20 Soru)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { background-image: url('Adsız tasarım (1).png'); /* Resminizin tam adı */
@@ -90,7 +90,7 @@
         </div>
 
         <h5 class="text-start border-bottom pb-2 mt-4">🏆 Liderlik Tablosu (İlk 10)</h5>
-     
+        <div class="table-responsive">
             <table class="table table-hover text-start align-middle">
                 <thead class="table-light">
                     <tr><th>#</th><th>İsim</th><th>Puan</th><th>Süre</th></tr>
@@ -164,7 +164,108 @@
   // ==========================================
   // 
   const allQuestions = [
-   {q:"'YARIŞMA SONA ERMİŞTİR",a:["TEŞEKKÜRLER","TEŞEKKÜRLER","TEŞEKKÜRLER","TEŞEKKÜRLER"]},];
+      { q: "'Yazar, konuşmasına kısa bir anekdot anlatarak başladı.' cümlesindeki anekdot kelimesinin Türkçe karşılığı nedir?", a: ["hikâyecik", "hatıra", "hikâye", "fıkra"] },
+  { q: "'Oyunun son sahnesi o kadar absürttü ki salon kahkahaya boğuldu.' cümlesindeki absürt kelimesinin Türkçe karşılığı nedir?", a: ["saçma", "ciddi", "düzgün", "mantıklı"] },
+  { q: "'Bu roman diziye adapte edilerek geniş kitlelere ulaştırıldı.' cümlesindeki adapte kelimesinin Türkçe karşılığı nedir?", a: ["uyarlanmış", "düzenlenmiş", "aktarılmış", "değiştirilmiş"] },
+  { q: "'Yemeğin sonunda garsondan adisyonu getirmesini istedik.' cümlesindeki adisyon kelimesinin Türkçe karşılığı nedir?", a: ["hesap", "menü", "fiş", "sipariş"] },
+  { q: "'Kitapta yer alan aforizmalar öğrencilerin çok hoşuna gitti.' cümlesindeki aforizma kelimesinin Türkçe karşılığı nedir?", a: ["özdeyiş", "atasözü", "nükte", "deyiş"] },
+  { q: "'Maç boyunca gösterdiği agresif tavırlar herkesi rahatsız etti.' cümlesindeki agresif kelimesinin Türkçe karşılığı nedir?", a: ["saldırgan", "hırçın", "sert", "kavgacı"] },
+  { q: "'Yeni yılda hedeflerimi ajandama tek tek not ettim.' cümlesindeki ajanda kelimesinin Türkçe karşılığı nedir?", a: ["andaç", "takvim", "defter", "planlayıcı"] },
+  { q: "'Gösteride yapılan akrobasi hareketleri izleyenleri büyüledi.' cümlesindeki akrobasi kelimesinin Türkçe karşılığı nedir?", a: ["cambazlık", "dengecilik", "jimnastik", "ip cambazlığı"] },
+  { q: "'Konuşmasında yaptığı ajitasyon kalabalığı olumsuz etkiledi.' cümlesindeki ajitasyon kelimesinin Türkçe karşılığı nedir?", a: ["kışkırtma", "kışkırtıcı konuşma", "duygu sömürüsü", "tahrik"] },
+  { q: "'Onu tanıdıkça sebepsiz bir antipati hissetmeye başladım.' cümlesindeki antipati kelimesinin Türkçe karşılığı nedir?", a: ["sevimsizlik, iticilik", "soğukluk", "nefret", "hoşnutsuzluk"] },
+  { q: "'Şiir antolojisi, farklı şairlerden seçme eserler içeriyor.' cümlesindeki antoloji kelimesinin Türkçe karşılığı nedir?", a: ["seçki", "roman", "şiir kitabı", "dergi"] },
+  { q: "'Fırından gelen vanilya aroması bütün evi sardı.' cümlesindeki aroma kelimesinin Türkçe karşılığı nedir?", a: ["hoş koku", "koku", "tat", "esans"] },
+  { q: "'Küçük yaşlardan beri astronomi ile ilgileniyor.' cümlesindeki astronomi kelimesinin Türkçe karşılığı nedir?", a: ["gök bilimi", "uzay araştırmaları", "astroloji", "fizik"] },
+  { q: "'Anavgart sanatçılar genellikle geleneksel anlayışın dışına çıkar.' cümlesindeki anavgart kelimesinin Türkçe karşılığı nedir?", a: ["öncü", "yenilikçi", "deneysel", "modernist"] },
+  { q: "'Bu çalışmada önceki yılın verilerini baz almak daha doğru olur.' cümlesindeki baz almak kelimesinin Türkçe karşılığı nedir?", a: ["temel almak", "referans almak", "ölçüt almak", "dayanak yapmak"] },
+  { q: "'Konserdeki bateri solosu uzun süre alkışlandı.' cümlesindeki bateri kelimesinin Türkçe karşılığı nedir?", a: ["davul", "zil", "gitar", "keman"] },
+  { q: "'Roman, dönemin burjuva yaşam tarzını eleştirel bir dille anlatıyor.' cümlesindeki burjuva kelimesinin Türkçe karşılığı nedir?", a: ["kent soylu", "orta sınıf", "zengin sınıf", "kentli"] },
+  { q: "'Toplumdaki değerlerin yavaş yavaş dejenere olduğunu savunuyor.' cümlesindeki dejenere kelimesinin Türkçe karşılığı nedir?", a: ["yoz, bozulmuş", "bozulmuş", "çürümüş", "yozlaşmış"] },
+  { q: "'Albümden önce kısa bir demo yayımlayıp dinleyicilerin tepkisini ölçtüler.' cümlesindeki demo kelimesinin Türkçe karşılığı nedir?", a: ["tanıtım gösterisi", "taslak kayıt", "tanıtım videosu", "ön izleme"] },
+  { q: "'Peş peşe gelen hatalar oyuncuyu tamamen demoralize etti.' cümlesindeki demoralize kelimesinin Türkçe karşılığı nedir?", a: ["morali bozulmuş", "yılgın", "motivasyonsuz", "umutsuz"] },
+  { q: "'Raporu hazırlarken küçük detaylara bile dikkat etmelisin.' cümlesindeki detay kelimesinin Türkçe karşılığı nedir?", a: ["ayrıntı", "nüans", "ince nokta", "küçük ayrıntı"] },
+  { q: "'Toplantı için gerekli tüm dokümanları klasöre yerleştirdim.' cümlesindeki doküman kelimesinin Türkçe karşılığı nedir?", a: ["belge", "dosya", "evrak", "metin"] },
+  { q: "'Yabancı filmler dublaj yerine altyazılı izlendiğinde dili daha iyi öğrenirsin.' cümlesindeki dublaj kelimesinin Türkçe karşılığı nedir?", a: ["seslendirme", "altyazı", "çeviri", "ses kaydı"] },
+  { q: "'Sürekli empoze edilen fikirler öğrencilerin zihnini daraltıyor.' cümlesindeki empoze kelimesinin Türkçe karşılığı nedir?", a: ["dayatılmış", "dayatmak", "zorla kabul ettirmek", "baskı kurmak"] },
+  { q: "'Endüstri devrimiyle birlikte üretim biçimleri tamamen değişti.' cümlesindeki endüstri kelimesinin Türkçe karşılığı nedir?", a: ["sanayi", "imalat", "üretim", "fabrika sektörü"] },
+  { q: "'Enstrüman çalmak beynin farklı bölgelerini aynı anda çalıştırır.' cümlesindeki enstrüman kelimesinin Türkçe karşılığı nedir?", a: ["çalgı", "nota", "orkestra", "melodi"] },
+  { q: "'Yarışın ilk etabı dağlık bölgede koşulacak.' cümlesindeki etap kelimesinin Türkçe karşılığı nedir?", a: ["aşama", "bölüm", "kısım", "tur"] },
+  { q: "'Türkiye'de euro ile alışveriş yapılan birçok mağaza bulunuyor.' cümlesindeki euro kelimesinin Türkçe karşılığı nedir?", a: ["avro", "dolar", "sterlin", "yen"] },
+  { q: "'Düzenli fitness yapmak hem bedeni hem zihni güçlendirir.' cümlesindeki fitness kelimesinin Türkçe karşılığı nedir?", a: ["sağlıklı yaşam", "kondisyon", "form tutma", "beden eğitimi"] },
+  { q: "'Folklor çalışmaları, bir milletin kültürel mirasını ortaya çıkarır.' cümlesindeki folklor kelimesinin Türkçe karşılığı nedir?", a: ["halk bilimi", "halk kültürü", "gelenek bilimi", "etnografya"] },
+  { q: "'Bu ürün beş yıl garanti kapsamındadır.' cümlesindeki garanti kelimesinin Türkçe karşılığı nedir?", a: ["güvence", "teminat", "güvencelik", "söz verme"] },
+  { q: "'Global sorunlara yerel çözümler üretmek giderek önem kazanıyor.' cümlesindeki global kelimesinin Türkçe karşılığı nedir?", a: ["küresel", "yerel", "bölgesel", "ulusal"] },
+  { q: "'Yazım yanlışlarının çoğu gramer kurallarına dikkat edilmemesinden kaynaklanıyor.' cümlesindeki gramer kelimesinin Türkçe karşılığı nedir?", a: ["dil bilgisi", "sözdizimi", "dil kuralları", "yazım bilgisi"] },
+  { q: "'Sakatlık onun için büyük bir handikap oluşturdu.' cümlesindeki handikap kelimesinin Türkçe karşılığı nedir?", a: ["engel", "avantaj", "kolaylık", "fırsat"] },
+  { q: "'Kafede öğrencilere özel happy hour uygulaması başlatıldı.' cümlesindeki happy hour kelimesinin Türkçe karşılığı nedir?", a: ["indirim saati", "kampanya saati", "indirim vakti", "promosyon saati"] },
+  { q: "'Oyuncu aynı maçta üç gol atarak hat trick yaptı.' cümlesindeki hat trick kelimesinin Türkçe karşılığı nedir?", a: ["üçleme", "üç gol", "üç sayı", "üç başarı"] },
+  { q: "'Hacker, sisteme izinsiz girerek birçok bilgiyi ele geçirdi.' cümlesindeki hacker kelimesinin Türkçe karşılığı nedir?", a: ["bilgisayar korsanı", "siber saldırgan", "şifre kırıcı", "korsan"] },
+  { q: "'Sıcak havada buz gibi ice tea içmek çok ferahlatıcı oluyor.' cümlesindeki ice tea kelimesinin Türkçe karşılığı nedir?", a: ["buzlu çay", "soğuk çay", "limonlu çay", "buzlu içecek"] },
+  { q: "'Bu hipotez deneylerle desteklenirse yeni bir teoriye dönüşebilir.' cümlesindeki hipotez kelimesinin Türkçe karşılığı nedir?", a: ["varsayım", "kuram", "sonuç", "kanıt"] },
+  { q: "'Denizde jet ski ile dolaşmak adrenalin dolu bir deneyimdir.' cümlesindeki jet ski kelimesinin Türkçe karşılığı nedir?", a: ["su kızağı", "kano", "deniz bisikleti", "sürat teknesi"] },
+  { q: "'Yarışmanın kazananlarını jüri oy birliğiyle belirledi.' cümlesindeki jüri kelimesinin Türkçe karşılığı nedir?", a: ["seçici kurul", "hakem heyeti", "değerlendirme kurulu", "seçici heyet"] },
+  { q: "'Kalifiye eleman bulmak bazı sektörlerde oldukça zorlaştı.' cümlesindeki kalifiye kelimesinin Türkçe karşılığı nedir?", a: ["nitelikli", "ehil", "uzman", "yetkin"] },
+  { q: "'Depremden sonra şehirde tam bir kaos ortamı oluştu.' cümlesindeki kaos kelimesinin Türkçe karşılığı nedir?", a: ["kargaşa", "düzen", "istikrar", "plan"] },
+  { q: "'Montunun kapüşon kısmı yağmurlu havalarda çok işine yarıyor.' cümlesindeki kapüşon kelimesinin Türkçe karşılığı nedir?", a: ["başlık", "yaka", "manşet", "fermuar"] },
+  { q: "'Onun duruşunda insanları etkileyen bir karizma var.' cümlesindeki karizma kelimesinin Türkçe karşılığı nedir?", a: ["etkileyicilik", "cazibe", "çekicilik", "etki gücü"] },
+  { q: "'Bilim insanları, klon hayvanlar üzerinde çeşitli deneyler yapıyor.' cümlesindeki klon kelimesinin Türkçe karşılığı nedir?", a: ["kopya", "eş kopya", "ikiz", "kopyalama"] },
+  { q: "'Çalışanların çocukları için kurum içinde bir kreş açıldı.' cümlesindeki kreş kelimesinin Türkçe karşılığı nedir?", a: ["çocuk yuvası", "anaokulu", "gündüz bakımevi", "yuva"] },
+  { q: "'Bu işlem yasal olduğu için herhangi bir sorun yaşamazsınız.' cümlesindeki legal kelimesinin Türkçe karşılığı nedir?", a: ["yasal", "meşru", "hukuki", "yasaya uygun"] },
+  { q: "'Yeni ürünün lansmanı büyük bir salon toplantısıyla yapıldı.' cümlesindeki lansman kelimesinin Türkçe karşılığı nedir?", a: ["tanıtım", "reklam", "kampanya", "duyuru"] },
+  { q: "'Bu ilacın likit formu çocuklar için daha kullanışlı.' cümlesindeki likit kelimesinin Türkçe karşılığı nedir?", a: ["sıvı", "toz", "tablet", "katı"] },
+  { q: "'Ödev dosyasının linkini sınıf grubunda paylaştım.' cümlesindeki link kelimesinin Türkçe karşılığı nedir?", a: ["bağlantı", "adres", "bağ", "URL"] },
+  { q: "'Onun fikirleri çoğu insana göre oldukça marjinal kalıyor.' cümlesindeki marjinal kelimesinin Türkçe karşılığı nedir?", a: ["aykırı", "ana akım", "geleneksel", "sıradan"] },
+  { q: "'Gönderdiğin mesaj bana biraz geç ulaştı.' cümlesindeki mesaj kelimesinin Türkçe karşılığı nedir?", a: ["ileti", "mektup", "haber", "duyuru"] },
+  { q: "'Hamuru karıştırmak için mikser kullanmayı tercih etti.' cümlesindeki mikser kelimesinin Türkçe karşılığı nedir?", a: ["çırpıcı", "fırın", "tencere", "bıçak"] },
+  { q: "'Bu roman mistik ögelerle dolu bir dünyada geçiyor.' cümlesindeki mistik kelimesinin Türkçe karşılığı nedir?", a: ["gizemci", "gizemli", "tasavvufi", "ruhani"] },
+  { q: "'Hayatta kendine seçtiği motto, her zaman dürüst olmaktı.' cümlesindeki motto kelimesinin Türkçe karşılığı nedir?", a: ["özdeyiş", "parola", "ilke", "söz"] },
+  { q: "'Filmin montaj aşaması beklenenden uzun sürdü.' cümlesindeki montaj kelimesinin Türkçe karşılığı nedir?", a: ["kurgu", "senaryo", "çekim", "dublaj"] },
+  { q: "'Narsist kişiler genellikle kendilerini başkalarından üstün görür.' cümlesindeki narsist kelimesinin Türkçe karşılığı nedir?", a: ["özsever", "benmerkezci", "kendini beğenmiş", "bencil"] },
+  { q: "'Otobüsler şehirler arası hatta non stop seferler düzenliyor.' cümlesindeki non stop kelimesinin Türkçe karşılığı nedir?", a: ["duraksız", "aktarmasız", "durmadan", "aralıksız"] },
+  { q: "'İnternet bağlantısı kesilince sistem off line konuma geçti.' cümlesindeki off line kelimesinin Türkçe karşılığı nedir?", a: ["çevrim dışı", "internetsiz", "bağlantısız", "çevrimdışı"] },
+  { q: "'Bu tasarım tamamen orijinal, kimseye benzemiyor.' cümlesindeki orijinal kelimesinin Türkçe karşılığı nedir?", a: ["özgün", "kopya", "taklit", "sahte"] },
+  { q: "'Şehrin yeni plaza bölgesinde çok sayıda ofis bulunuyor.' cümlesindeki plaza kelimesinin Türkçe karşılığı nedir?", a: ["iş merkezi", "iş hanı", "ticaret merkezi", "ofis binası"] },
+  { q: "'İki yazar arasında gazetede sert bir polemik başladı.' cümlesindeki polemik kelimesinin Türkçe karşılığı nedir?", a: ["söz dalaşı", "tartışma", "atışma", "münakaşa"] },
+  { q: "'Hayatında bazı prensiplerden asla vazgeçmiyor.' cümlesindeki prensip kelimesinin Türkçe karşılığı nedir?", a: ["ilke", "çıkar", "kapris", "alışkanlık"] },
+  { q: "'Boş zamanlarında puzzle yaparak dinlenmeyi seviyor.' cümlesindeki puzzle kelimesinin Türkçe karşılığı nedir?", a: ["yapboz", "lego", "çizim", "oyun kartı"] },
+  { q: "'Düzenli bakım yapılmayan makinelerden yeterli randıman alınamaz.' cümlesindeki randıman kelimesinin Türkçe karşılığı nedir?", a: ["verim", "gider", "masraf", "kayıp"] },
+  { q: "'Uçağın kalkışı yoğun sis nedeniyle rötar yaptı.' cümlesindeki rötar kelimesinin Türkçe karşılığı nedir?", a: ["gecikme", "hızlanma", "erken kalkış", "vakitlice"] },
+  { q: "'Sınavdan önceki geceyi sabote eden gürültülü bir inşaat vardı.' cümlesindeki sabote kelimesinin Türkçe karşılığı nedir?", a: ["baltalama", "engellemek", "bozmak", "baltalamak"] },
+  { q: "'Yeni öğretmen öğrencilere karşı çok sempatik davranıyor.' cümlesindeki sempatik kelimesinin Türkçe karşılığı nedir?", a: ["sıcakkanlı", "sevimli", "cana yakın", "hoş"] },
+  { q: "'Maçın skor tabelası sık sık bozuldu.' cümlesindeki skor kelimesinin Türkçe karşılığı nedir?", a: ["sonuç", "taktik", "hakem", "seyirci"] },
+  { q: "'Bu metin bana biraz fazla sofistike geldi.' cümlesindeki sofistike kelimesinin Türkçe karşılığı nedir?", a: ["yapmacık, yanıltıcı", "basit", "kaba", "sıradan"] },
+  { q: "'Bu iddia tamamen spekülatif yorumlara dayanıyor.' cümlesindeki spekülatif kelimesinin Türkçe karşılığı nedir?", a: ["kurgusal, saptırıcı", "kesin", "kanıtlı", "nesnel"] },
+  { q: "'Arkadaşlarıyla buluşma kararı tamamen spontane gelişti.' cümlesindeki spontane kelimesinin Türkçe karşılığı nedir?", a: ["kendiliğinden", "planlı", "önceden kararlaştırılmış", "hesaplı"] },
+  { q: "'Şef, bu akşama özel bir spesiyal hazırladığını söyledi.' cümlesindeki spesiyal kelimesinin Türkçe karşılığı nedir?", a: ["özel", "menü", "tatlı", "içecek"] },
+  { q: "'Depoda biriken stok miktarı beklenenden fazla çıktı.' cümlesindeki stok kelimesinin Türkçe karşılığı nedir?", a: ["yığılım", "depo", "birikim", "mal fazlası"] },
+  { q: "'Defterinin kapağına renkli stickerlar yapıştırmış.' cümlesindeki sticker kelimesinin Türkçe karşılığı nedir?", a: ["çıkartma", "kalem", "zımba", "dosya"] },
+  { q: "'Hatalara karşı belli bir tolerans gösterilmelidir.' cümlesindeki tolerans kelimesinin Türkçe karşılığı nedir?", a: ["hoşgörü", "yasak", "ceza", "katılık"] },
+  { q: "'Yaşadığı trafik kazası onda derin bir travma bıraktı.' cümlesindeki travma kelimesinin Türkçe karşılığı nedir?", a: ["sarsıntı", "mutluluk", "alışkanlık", "sıradanlık"] },
+  { q: "'Bu yıl sade tasarımlar moda trendleri arasında öne çıkıyor.' cümlesindeki trend kelimesinin Türkçe karşılığı nedir?", a: ["eğilim", "moda", "akım", "tarz"] },
+  { q: "'Kurulan şehir tamamen ütopik bir düzen üzerine kurgulanmış.' cümlesindeki ütopik kelimesinin Türkçe karşılığı nedir?", a: ["hayalî", "gerçekçi", "somut", "pratik"] },
+  { q: "'İnternetin temelini oluşturan web teknolojileri hızla gelişiyor.' cümlesindeki web kelimesinin Türkçe karşılığı nedir?", a: ["ağ", "kitap", "ekran", "program"] },
+  { q: "'Bu hafta sınıf için yaratıcı drama workshop çalışması yapılacak.' cümlesindeki workshop kelimesinin Türkçe karşılığı nedir?", a: ["çalıştay", "seminer", "konferans", "panel"] },
+  { q: "'Bu makalenin analizi oldukça kapsamlı bir çalışma gerektiriyor.' cümlesindeki analiz kelimesinin Türkçe karşılığı nedir?", a: ["çözümleme", "özet", "hikâye", "tahmin"] },
+  { q: "'Projeye başlamadan önce bir konsept belirlememiz gerekiyor.' cümlesindeki konsept kelimesinin Türkçe karşılığı nedir?", a: ["kavram", "malzeme", "şekil", "renk"] },
+  { q: "'Bu süreçte mentor desteği almak çok faydalı olabilir.' cümlesindeki mentor kelimesinin Türkçe karşılığı nedir?", a: ["rehber", "öğrenci", "izleyici", "rakip"] },
+  { q: "'Yeni kurulan start-up kısa sürede yatırımcıların dikkatini çekti.' cümlesindeki start-up kelimesinin Türkçe karşılığı nedir?", a: ["girişim", "şube", "kooperatif", "holding"] },
+  { q: "'Bu tabloda tüm modül ayarlarını görebilirsiniz.' cümlesindeki modül kelimesinin Türkçe karşılığı nedir?", a: ["bölüm", "sistem", "yapı", "düzenek"] },
+  { q: "'Sanatçının portfolyo sunumu izleyenleri etkiledi.' cümlesindeki portfolyo kelimesinin Türkçe karşılığı nedir?", a: ["eser dosyası", "dosya", "özgeçmiş", "çalışma örnekleri"] },
+  { q: "'Yeni medya kampanyası oldukça etkili bir sloganla hazırlandı.' cümlesindeki slogan kelimesinin Türkçe karşılığı nedir?", a: ["özdeyiş", "başlık", "tanıtım metni", "bildiri"] },
+  { q: "'Her departmanın kendi stratejisini oluşturması bekleniyor.' cümlesindeki strateji kelimesinin Türkçe karşılığı nedir?", a: ["yöntem", "şans", "tesadüf", "alışkanlık"] },
+  { q: "'Takım içinde yapılan brief toplantısı oldukça verimli geçti.' cümlesindeki brief kelimesinin Türkçe karşılığı nedir?", a: ["kısa bilgilendirme", "özet", "kısa bilgi", "bilgilendirme"] },
+  { q: "'Ürün tasarımı sırasında prototip üzerinde birçok değişiklik yapıldı.' cümlesindeki prototip kelimesinin Türkçe karşılığı nedir?", a: ["ilk örnek", "taslak", "deneme ürünü", "ilk model"] },
+  { q: "'Bu iş için uygun bir profil bulmak biraz zaman alacak.' cümlesindeki profil kelimesinin Türkçe karşılığı nedir?", a: ["kişisel özellik", "özellikler", "kimlik", "tanım"] },
+  { q: "'Bu sistemin optimum düzeyde çalışması için ayar yapılması gerekiyor.' cümlesindeki optimum kelimesinin Türkçe karşılığı nedir?", a: ["en uygun", "minimum", "aşırı", "eksik"] },
+  { q: "'Yönetim kurulu projeyi onaylamak için bir vizyon sunulmasını istedi.' cümlesindeki vizyon kelimesinin Türkçe karşılığı nedir?", a: ["gelecek tasarımı", "gelecek hedefi", "bakış", "uzun vadeli amaç"] },
+  { q: "'Ekibin motivasyonunu artırmak için yeni bir misyon belirlendi.' cümlesindeki misyon kelimesinin Türkçe karşılığı nedir?", a: ["görev", "vizyon", "hedef", "plan"] },
+  { q: "'Bu yapımın kadrosunda tanınmış bir cast bulunuyor.' cümlesindeki cast kelimesinin Türkçe karşılığı nedir?", a: ["oyuncu kadrosu", "oyuncular", "kadrolar", "rol dağılımı"] },
+  { q: "'Sunumdan önce küçük bir demo hazırladık.' cümlesindeki demo kelimesinin Türkçe karşılığı nedir?", a: ["tanıtım örneği", "taslak", "prototip", "deneme sürümü"] },
+  { q: "'Bu formu doldururken tüm feedback bölümünü eksiksiz tamamlayın.' cümlesindeki feedback kelimesinin Türkçe karşılığı nedir?", a: ["geri bildirim", "yorum", "değerlendirme", "geri dönüş"] },
+  { q: "'Etkinlik sonunda katılımcılara sertifika verilecek.' cümlesindeki sertifika kelimesinin Türkçe karşılığı nedir?", a: ["belge", "diploma", "katılım belgesi", "yeterlilik belgesi"] }
+
+  ];
 
   // ==========================================
   // TCKN KONTROL VE TEKRAR GİRİŞ ENGELİ FONKSİYONU
@@ -365,10 +466,4 @@
 </body>
 
 </html>
-
-
-
-
-
-
 
