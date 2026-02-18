@@ -329,7 +329,8 @@
       els.login.classList.remove('hidden');
   }
 
-  async function getLeaderboard() {
+ async function getLeaderboard() {
+      // Puanı yüksek olan, eşitse süresi az olan öne geçer
       const q = query(collection(db, "scores"), orderBy("score", "desc"), orderBy("time", "asc"), limit(10));
       const snapshot = await getDocs(q);
       const tbody = document.getElementById('leaderboard-body');
@@ -338,7 +339,21 @@
       let rank = 1;
       snapshot.forEach(doc => {
           const d = doc.data();
-          tbody.innerHTML += `<tr><td>${rank++}</td><td>${d.name}</td><td><strong>${d.score}</strong></td><td>${d.time}sn</td></tr>`;
+          
+          // İsim ve Okulu alt alta yazdıran kısım burası:
+          // <small> etiketi okulu biraz küçültür, text-muted rengini gri yapar.
+          const nameInfo = `
+              <div class="fw-bold">${d.name}</div>
+              <small class="text-muted" style="font-size: 0.85em;">${d.school}</small>
+          `;
+
+          tbody.innerHTML += `
+            <tr>
+                <td class="align-middle">${rank++}</td>
+                <td class="align-middle">${nameInfo}</td>
+                <td class="align-middle"><strong class="text-success">${d.score}</strong></td>
+                <td class="align-middle">${d.time}sn</td>
+            </tr>`;
       });
   }
 
